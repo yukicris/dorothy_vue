@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-on="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+<!--view 层 模板-->
+<div id="app"><!--{{message}}-->
+   输入的文本: <input type="text" v-model="message">{{message}}
+    <textarea type="text" v-model="message">{{message}}</textarea>
+
+
+    单选框: <input type="radio" name="sex" value="男" v-model="yukicris"/>男
+           <input type="radio" name="sex" value="女" v-model="yukicris"/>女
+            <p>选择了{{yukicris}}</p>
+
+
+    下拉框:
+    <select v-model="selected">
+        <!--disabled不可选中-->
+        <option value="" disabled>--请选择--</option>
+        <option>A</option>
+        <option>B</option>
+        <option>C</option>
+        <option>D</option>
+        <option>E</option>
+    </select>
+
+    <span>选择的值: {{selected}}</span>
+</div>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/vue@3.2.41/dist/vue.global.min.js"></script>
+<script>
+    Vue.createApp({
+        data(){
+            return {
+                message: 'hi,dorothy',
+                checked: false,
+                yukicris: '',
+                selected: "" //默认值
+            }
+        }
+    }).mount('#app');
+</script>
+</body>
+</html>

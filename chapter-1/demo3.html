@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<!--view 层 模板-->
+<div id="app"><!--{{message}}-->
+    <h1 v-if="ok">yes</h1>
+    <h1 v-else>no</h1>
+    <h1 v-if="type==='A'">A</h1>
+    <h1 v-else>B</h1>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/vue@3.2.41/dist/vue.global.min.js"></script>
+<script>
+    Vue.createApp({
+        //model : 数据
+        data(){
+            return {
+                ok: false,
+                type: 'A'
+            }
+        }
+    }).mount('#app');
+</script>
+
+
+</body>
+</html>

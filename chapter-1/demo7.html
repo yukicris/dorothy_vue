@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <style><!--解决加载闪烁问题-->
+        [v-clock]{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+
+<!--view 层 模板-->
+<div id="app" v-clock>
+    <div>{{code}}</div>
+    <div>{{msg}}</div>
+    <h1 v-for="item in link">{{item.mydata.name}}</h1>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/vue@3.2.41/dist/vue.global.min.js"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+
+<script>
+    Vue.createApp({
+        //model : 数据
+        data(){
+            return {
+                message: 'hi,dorothy',
+                code: '',
+                msg: '',
+                data: '',
+                link: ''
+            }
+        },
+        mounted(){ //钩子函数链式编程(es6新特性),打开这个就可以在f12里面看到了
+            axios.get('../data.json').then(response=>(
+                console.log(response.data),
+                this.code = response.data.code,
+                this.msg = response.data.msg,
+                this.link = response.data.data.links
+            ).catch(function(error){
+                console.log(error);
+            }))
+        }
+    }).mount('#app');
+</script>
+</body>
+</html>

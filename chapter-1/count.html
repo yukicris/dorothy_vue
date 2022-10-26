@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<li id="app">
+    <yukicris></yukicris>
+</li>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/vue@3.2.41/dist/vue.global.min.js"></script>
+<script>
+
+    const app = Vue.createApp({})
+
+   app.component('yukicris',{
+       data(){
+           return {
+               count:0
+           }
+       },
+       template: `
+       <button @click="count++">
+         点了 {{ count }} 次！
+       </button>`
+   })
+    //上面是反引号
+    app.mount('#app')
+</script>
+</body>
+</html>

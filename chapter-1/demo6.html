@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<li id="app">
+    <yukicris></yukicris>
+    <makas v-for="site in sites" :id="site.id" title="site.title"></makas>
+</li>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/vue@3.2.41/dist/vue.global.min.js"></script>
+<script>
+
+const Site = {
+        data() {
+            return {
+                sites: [
+                    { id: 1, title: 'Google' },
+                    { id: 2, title: 'Runoob' },
+                    { id: 3, title: 'Taobao' }
+                ]
+            }
+        }
+}
+
+const app = Vue.createApp(Site)//这里的全局传参很重要
+
+    //定义一个全局组件
+app.component('yukicris',{
+    data(){
+        return {
+            message:112233
+        }
+    },
+    template: '<h1>{{message}}</h1>'
+})
+
+
+app.component('makas',{
+    props: ['id','title'],
+    template: '<h2>{{id}}-{{title}}</h2>'
+})
+
+
+app.mount('#app')
+</script>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+<!--view 层 模板-->
+<div id="app"><!--{{message}}-->
+    <button @click="sayhi">click Me</button>
+    <!--等同于-->
+    <button v-on:click="sayhi">click Me2</button>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/vue@3.2.41/dist/vue.global.min.js"></script>
+<script>
+    Vue.createApp({
+        //model : 数据
+        data(){
+            return {
+                message: 'hi,dorothy'
+            }
+        },
+        methods:{
+            //方法必须定义在Vue的Methods中
+            sayhi: function () {
+                alert(this.message)
+            }
+        }
+    }).mount('#app');
+</script>
+</body>
+</html>

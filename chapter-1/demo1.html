@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+</head>
+<body>
+<!--1 导入vue.js 官网
+  https://cn.vuejs.org/guide/quick-start.html ,也可以用一些其他npm服务包提供的cdn,jsdelivr之类-->
+
+<!--view 层 模板-->
+<div id="app"><!--{{message}}-->
+    <span v-bind:title="message">
+         鼠标悬停几秒钟查看此处动态绑定提示信息
+    </span>
+</div>
+
+<!--这个是全局构建版本的vue-->
+<!--<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>-->
+<!--kuangshen版,3版本语法变了,要用2的-->
+<script src="https://cdn.jsdelivr.net/npm/vue@3.2.41/dist/vue.global.min.js"></script>
+<script>
+    /* const { createApp } = Vue
+
+  全局构建版   createApp({
+         data() {
+             return {
+                 message: 'Hello Vue!'
+             }
+         }
+     }).mount('#app')*/
+
+    Vue.createApp({
+        //model : 数据
+        data(){
+            return {
+                message:"hello,Vue"
+            }
+        }
+    }).mount('#app');
+</script>
+</body>
+</html>
