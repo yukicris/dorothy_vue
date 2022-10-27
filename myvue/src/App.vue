@@ -1,17 +1,26 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png">
     HELLO Dorothy
+    <h1 @click="dianji">点击首页</h1>
+    <router-link to="/main">首页</router-link>
+    <router-link to="/content">内容页</router-link>
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld'
+  import Content from "./components/Content";
 
 export default {
   name: 'App',
-  components: {
-    HelloWorld
+  methods: {
+    dianji () {
+      var routeData = this.$router.resolve({
+        path: '/main',
+        query: { title: '"xskb","xzkb","xs_wcnrcls","xz_wcnrcls","xjzsl"'}
+      })
+      window.open(routeData.href, '_blank')
+    }
   }
 }
 </script>
