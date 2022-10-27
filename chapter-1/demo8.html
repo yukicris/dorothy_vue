@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+<div id="app">
+    <p>{{currentTime()}}</p>
+    <p>{{currentTime2}}</p>
+</div>
+
+
+<script src="https://cdn.jsdelivr.net/npm/vue@3.2.41/dist/vue.global.min.js"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+
+<script>
+    Vue.createApp({
+        //model : 数据
+        data(){
+            return {
+                message: 'hi,dorothy'
+            }
+        },
+        methods: {
+            //method中的需要通过方法调用,也就是加括号
+            currentTime: function (){
+                return Date.now();  //返回一个时间戳
+            }
+        },
+        computed: {
+            //计算属性,methods和computed中的方法可以重名,但是不建议使用
+            //通过属性调用,不加括号
+            currentTime2: function (){
+                //这里的操作类似缓存,就是一开始的结果不会改变,一旦其中做了增删改等操作,马上会刷新缓存
+                //在f12 里面访问currentTime每请求一次都会有一个不同的结果,而currentTime2会一直是同一个结果,
+                //在更改this.message的值以后,time2 的结果会跟着刷新,然后再次保持不变,类似mybatis的缓存,
+                //重复的数据就可以放在computed中,将不经常计算的方法放入cumputed中
+                this.message;
+                return Date.now();  //返回一个时间戳
+            }
+        }
+    }).mount('#app');
+</script>
+
+</body>
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+
+
+
+
+<div id="app">
+    <p>列表书籍</p>
+    <todo>
+    <todotitle v-slot="todotitle" :title="title"></todotitle>
+    <todoitems v-slot="todoitems" v-for="item in todoItems"></todoitems>
+    </todo>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/vue@2.5.21/dist/vue.global.min.js"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+<script>
+
+
+/*    //slot插槽
+    Vue.component('todo',{
+       template:
+           '<div>\
+                <slot name="todotitle"></slot>\
+                    <ul>\
+                <slot name="todoitems"></slot>\
+                    </ul>\
+            </div>'
+    });
+
+    Vue.component('todotitle',{
+        props:['title'],
+        template: '<div>{{title}}</div>'
+    });
+
+    Vue.component('todoitems',{
+        props: ['item'],
+        template: '<li>{{item}}</li>'
+    });*/
+
+
+    Vue.createApp({
+        Component:{
+            data() {
+                return {
+                    title: 'hi,dorothy',
+                    todoItems: ['happy', 'lucky', 'smile']
+                }
+            },
+            todo: {
+                template:
+                    '<div>\
+                         <slot name="todotitle"></slot>\
+                             <ul>\
+                         <slot name="todoitems"></slot>\
+                             </ul>\
+                     </div>'
+            },
+            todotitle: {
+                props:['title'],
+                template: '<div>{{title}}</div>'
+            },
+            todoitems: {
+                props: ['item'],
+                template: '<li>{{item}}</li>'
+            }
+        }
+    }).mount('#app');
+</script>
+</body>
+</html>
