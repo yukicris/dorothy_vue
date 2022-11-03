@@ -1,10 +1,15 @@
 <template>
+  <div>
   <h1>内容页</h1>
+  {{password}}
+    </div>
 </template>
 
 <script>
     export default {
-        name: "Content"
+        props:['password'],
+        name: "Content",
+
     }
 </script>
 
